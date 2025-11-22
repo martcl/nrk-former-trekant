@@ -83,6 +83,10 @@ pub fn build(b: *std.Build) void {
         }),
     });
 
+    // Since we use time.c from libc, we need to include this as not all
+    // operating systems do this automatically 
+    exe.linkLibC();
+
     // This declares intent for the executable to be installed into the
     // install prefix when running `zig build` (i.e. when executing the default
     // step). By default the install prefix is `zig-out/` but can be overridden
